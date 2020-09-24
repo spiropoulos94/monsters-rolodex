@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CardList from "./components/cardlist/cardlist.component";
 
-const url ="http://jsonplaceholder.typicode.com/users"
+const url = "http://jsonplaceholder.typicode.com/users"
 
 class App extends Component {
 
@@ -15,17 +15,16 @@ class App extends Component {
     }
 
     componentDidMount() {
-      fetch(url)
-          .then(res=> res.json())
-          .then(data => this.setState({monsters : data }))
-
+        fetch(url)
+            .then(res => res.json())
+            .then(data => this.setState({monsters: data}))
     }
 
 
-  render() {
+    render() {
         return (
             <div className="App">
-              {this.state.monsters.map(monster => <h1 key={monster.id} >{monster.name}</h1> )}
+                <CardList monsters={this.state.monsters}/>
             </div>
         )
     }
